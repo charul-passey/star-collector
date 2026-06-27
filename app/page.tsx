@@ -1,3 +1,5 @@
+"use client";
+
 import dynamic from "next/dynamic";
 
 const StarCollectorGame = dynamic(() => import("@/components/StarCollectorGame"), { ssr: false });
