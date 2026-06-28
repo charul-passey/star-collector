@@ -39,7 +39,7 @@ export default function StarCollectorGame() {
     if (!mount) return;
 
     const renderer = new THREE.WebGLRenderer({ antialias: true });
-    renderer.setSize(mount.clientWidth, mount.clientHeight);
+    renderer.setSize(window.innerWidth, window.innerHeight);
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     renderer.shadowMap.enabled = true;
     mount.appendChild(renderer.domElement);
@@ -179,9 +179,9 @@ export default function StarCollectorGame() {
     }
 
     const onResize = () => {
-      camera.aspect = mount.clientWidth / mount.clientHeight;
+      camera.aspect = window.innerWidth / window.innerHeight;
       camera.updateProjectionMatrix();
-      renderer.setSize(mount.clientWidth, mount.clientHeight);
+      renderer.setSize(window.innerWidth, window.innerHeight);
     };
     window.addEventListener("resize", onResize);
 
@@ -315,5 +315,5 @@ export default function StarCollectorGame() {
     };
   }, []);
 
-  return <div ref={mountRef} className="w-full h-full" />;
+  return <div ref={mountRef} style={{ width: "100%", height: "100%", display: "block" }} />;
 }
